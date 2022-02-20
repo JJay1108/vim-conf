@@ -2,9 +2,9 @@ call plug#begin()
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'universal-ctags/ctags'
+"Plug 'universal-ctags/ctags'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
@@ -13,7 +13,9 @@ Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'preservim/tagbar'
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
+Plug 'Yggdroot/indentLine'
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 set tags=./.tags;,.tags
@@ -85,6 +87,7 @@ nnoremap <Leader>fl :LeaderfLine<CR>
 nnoremap <Leader>ff :LeaderfFile<CR>
 nnoremap <Leader>tg :LeaderfTag<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
+nnoremap <Leader>rg :Leaderf rg<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
 
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
@@ -172,13 +175,15 @@ function! CompileRunGcc()
 			execute "!mkdir build"
 		endif	
 		execute "!gcc -g % -o build/%<"
+		execute "term ./build/%<"
 	endif	
 
 	if &filetype == "cpp" 
 		if !isdirectory('build')
 			execute "!mkdir build"
 		endif	
-		execute "!g++ -g % -o build/%<"
+		execute "!g++ -std=c++11 -g % -Wall -o build/%<"
+		execute "term ./build/%<"
 	endif
 endfunction	
 
@@ -194,10 +199,23 @@ inoremap <C-l> <Right>
 "nnoremap <leader>li A
 "nnoremap <leader>hi I
 
+"---------------COC NVIM SETTINGS-----
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+
+
+"---------------COC NVIM END---------
 "quickly edit the .vimrc
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
 
 "set showtabline=2
+set updatetime=1000
 set nu
 set tabstop=4
 set shiftwidth=4
