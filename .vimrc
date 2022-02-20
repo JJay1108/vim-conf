@@ -88,6 +88,7 @@ nnoremap <Leader>ff :LeaderfFile<CR>
 nnoremap <Leader>tg :LeaderfTag<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
 nnoremap <Leader>rg :Leaderf rg<CR>
+nnoremap <Leader>bf :Leaderf buffer --popup<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
 
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
