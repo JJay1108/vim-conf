@@ -83,14 +83,16 @@ endif
 "---------------------------------------------
 
 let mapleader=','
+"let g:Lf_PreviewInPopup = 1
 nnoremap <Leader>fl :LeaderfLine<CR>
 nnoremap <Leader>ff :LeaderfFile<CR>
 nnoremap <Leader>tg :LeaderfTag<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
 nnoremap <Leader>rg :Leaderf rg<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
-nnoremap <C-n> :CocCommand explorer<CR>
+nnoremap <Leader>fun :Leaderf function --popup<CR>
 
+nnoremap <C-n> :CocCommand explorer<CR>
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 
 "---------------------------------------------
@@ -228,3 +230,4 @@ set autoindent
 set syntax=on
 set nocompatible
 set backspace=indent,eol,start
+set hlsearch
