@@ -15,7 +15,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'preservim/tagbar'
 "Plug 'puremourning/vimspector'
 Plug 'Yggdroot/indentLine'
-Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 
 set tags=./.tags;,.tags
@@ -83,15 +83,15 @@ endif
 "---------------------------------------------
 
 let mapleader=','
-"let g:Lf_PreviewInPopup = 1
+let g:Lf_PreviewInPopup = 1
 nnoremap <Leader>fl :LeaderfLine<CR>
 nnoremap <Leader>ff :LeaderfFile<CR>
 nnoremap <Leader>tg :LeaderfTag<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
 nnoremap <Leader>rg :Leaderf rg<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
-nnoremap <Leader>fun :Leaderf function --popup<CR>
-
+nnoremap <Leader>fun :Leaderf function<CR>
+let g:Lf_PreviewResult = {'Function': 1, 'BufTag': 0 }
 nnoremap <C-n> :CocCommand explorer<CR>
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 
