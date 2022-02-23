@@ -16,6 +16,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'puremourning/vimspector'
 Plug 'Yggdroot/indentLine'
 "Plug 'skywind3000/asyncrun.vim'
+Plug 'ajmwagar/vim-deus'
 call plug#end()
 
 set tags=./.tags;,.tags
@@ -156,7 +157,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "colorscheme solarized
 "colorscheme desert 
 "colorscheme peachpuff
-colorscheme slate
+"colorscheme slate
+colorscheme deus
 
 "---------------AIRLINE BEGIN---------
 let g:airline_theme='molokai'
