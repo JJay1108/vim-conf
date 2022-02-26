@@ -9,7 +9,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'enricobacis/vim-airline-clock'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'preservim/tagbar'
@@ -161,7 +161,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 colorscheme deus
 
 "---------------AIRLINE BEGIN---------
-let g:airline_theme='molokai'
+let g:airline_theme='deus'
 let g:alrline#extensions#tabline#enabled = 1
 "---------------AIRLINE END-----------
 
