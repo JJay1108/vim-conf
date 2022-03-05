@@ -17,7 +17,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Yggdroot/indentLine'
 "Plug 'skywind3000/asyncrun.vim'
 Plug 'ajmwagar/vim-deus'
+"Plug 'lambdalisue/nerdfont.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+
+"echo nerdfont#find()
+
+
 
 set tags=./.tags;,.tags
 
@@ -104,9 +111,11 @@ nnoremap <C-n> :CocCommand explorer<CR>
 "--------------------------------
 "				配置背景
 "--------------------------------
-"if has ('gui_running')
+
+
 "	set background=light
-"else
+
+"	"else
 "	set background=dark
 "endif
 
@@ -128,10 +137,9 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-"let g:ale_linters = {
-"	\ 'c': ['gcc'],
-"	\ 'cpp': ['g++'],
-"""	\ }
+let g:ale_linters = {
+	\ 'cpp': ['cppcheck'],
+	\ }
 
 let g:ale_linters_explicit = 1	"只显示运行ale_linters的文件
 let g:ale_completion_delay = 500
@@ -161,6 +169,7 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 colorscheme deus
 
 "---------------AIRLINE BEGIN---------
+let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 let g:alrline#extensions#tabline#enabled = 1
 "---------------AIRLINE END-----------
@@ -212,13 +221,28 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>" "输入回车来选择补全项"
 
+" Use K to show documentation in preview window.
+nnoremap <silent> <leader>hh  :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
+nnoremap <silent> <leader>cf :CocConfig<CR>
 "---------------COC NVIM END---------
 "quickly edit the .vimrc
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
 
+set encoding=UTF-8
 "set showtabline=2
 set updatetime=1000
 set nu
@@ -233,3 +257,4 @@ set syntax=on
 set nocompatible
 set backspace=indent,eol,start
 set hlsearch
+set conceallevel=2

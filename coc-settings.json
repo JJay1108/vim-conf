@@ -8,10 +8,14 @@
 		
 		},
 		"diagnostic.displayByAle":true,
-
-		"diagnostic.refreshOnInsertMode":true
-
+		"diagnostic.refreshOnInsertMode":true,
 		
+		"codeLens.enable": true,
+
+		"explorer.icon.enableNerdfont": true,
+		"explorer.icon.source" : "vim-devicons" 
+
 }
+
 
 
