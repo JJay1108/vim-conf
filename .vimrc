@@ -19,6 +19,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'ajmwagar/vim-deus'
 "Plug 'lambdalisue/nerdfont.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'bagrat/vim-buffet'
 call plug#end()
 
 
@@ -169,12 +170,28 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 colorscheme deus
 
 "---------------AIRLINE BEGIN---------
+set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
-let g:alrline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline_deus_bg='dark'
+let g:alrline#extensions#tabline#enabled = 0
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+
 "---------------AIRLINE END-----------
+
+"---------------VIM BUFFET------------
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=white ctermfg=100 guibg=#F0F8FF guifg=#000000
+  hi! BuffetBuffer cterm=NONE ctermbg=grey ctermfg=black
+endfunction
+
+
+
+
+"---------------VIM BUFFET END ------
+
+
 
 "---------------VIMSPECTOR begin------
 "
@@ -244,6 +261,8 @@ nnoremap <C-n> :CocCommand explorer<CR>
 "---------------COC NVIM END---------
 "quickly edit the .vimrc
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
+nnoremap <leader>vs :vsplit<CR>
+nnoremap <leader>sw :split<CR>
 
 set encoding=UTF-8
 "set showtabline=2
