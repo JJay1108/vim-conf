@@ -99,8 +99,8 @@ nnoremap <Leader>tt :Leaderf bufTag --right<CR>
 nnoremap <Leader>rg :Leaderf rg<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
 nnoremap <Leader>fun :Leaderf function<CR>
+nnoremap <Leader>mr :Leaderf mru<CR>
 let g:Lf_PreviewResult = {'Function': 1, 'BufTag': 0 }
-nnoremap <C-n> :CocCommand explorer<CR>
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 
 "---------------------------------------------
@@ -172,6 +172,8 @@ colorscheme deus
 let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 let g:alrline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
 "---------------AIRLINE END-----------
 
 "---------------VIMSPECTOR begin------
@@ -238,6 +240,7 @@ function! s:show_documentation()
 endfunction
 
 nnoremap <silent> <leader>cf :CocConfig<CR>
+nnoremap <C-n> :CocCommand explorer<CR>
 "---------------COC NVIM END---------
 "quickly edit the .vimrc
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
