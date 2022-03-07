@@ -18,7 +18,7 @@ Plug 'Yggdroot/indentLine'
 "Plug 'skywind3000/asyncrun.vim'
 Plug 'ajmwagar/vim-deus'
 "Plug 'lambdalisue/nerdfont.vim'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
 call plug#end()
 
@@ -171,7 +171,7 @@ colorscheme deus
 
 "---------------AIRLINE BEGIN---------
 set laststatus=2
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0 
 let g:airline_theme='deus'
 let g:airline_deus_bg='dark'
 let g:alrline#extensions#tabline#enabled = 0
