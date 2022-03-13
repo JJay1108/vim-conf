@@ -264,6 +264,11 @@ nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>sw :split<CR>
 
+nnoremap <leader>jj <C-w><Down>
+nnoremap <leader>kk <C-w><Up>
+nnoremap <leader>hh <C-w><Left>
+nnoremap <leader>ll <C-w><Right>
+
 set encoding=UTF-8
 "set showtabline=2
 set updatetime=1000
