@@ -18,7 +18,7 @@ Plug 'Yggdroot/indentLine'
 "Plug 'skywind3000/asyncrun.vim'
 Plug 'ajmwagar/vim-deus'
 "Plug 'lambdalisue/nerdfont.vim'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
 call plug#end()
 
@@ -59,7 +59,7 @@ let g:gutentags_cache_dir = s:vim_tags
 
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxUZ']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " 检测 ~/.cache/tags 不存在就新建
@@ -171,10 +171,10 @@ colorscheme deus
 
 "---------------AIRLINE BEGIN---------
 set laststatus=2
-let g:airline_powerline_fonts = 0 
+let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 let g:airline_deus_bg='dark'
-let g:alrline#extensions#tabline#enabled = 0
+let g:alrline#extensions#tabline#enabled = 1
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
@@ -274,6 +274,8 @@ set encoding=UTF-8
 set updatetime=1000
 set nu
 set tabstop=4
+set softtabstop=4
+set expandtab
 set shiftwidth=4
 set ruler
 set cursorline
