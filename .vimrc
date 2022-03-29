@@ -20,6 +20,8 @@ Plug 'ajmwagar/vim-deus'
 "Plug 'lambdalisue/nerdfont.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
+Plug 'yianwillis/vimcdoc'
+Plug 'vim-scripts/a.vim'
 call plug#end()
 
 
@@ -58,7 +60,7 @@ let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 
 " 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+fq']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxUZ']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
@@ -101,7 +103,7 @@ nnoremap <Leader>rg :Leaderf rg<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
 nnoremap <Leader>fun :Leaderf function<CR>
 nnoremap <Leader>mr :Leaderf mru<CR>
-let g:Lf_PreviewResult = {'Function': 1, 'BufTag': 0 }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 
 "---------------------------------------------
@@ -244,7 +246,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>" "输入回车来选择补全项"
 
 " Use K to show documentation in preview window.
-nnoremap <silent> <leader>hh  :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>doc  :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -271,6 +273,7 @@ nnoremap <leader>ll <C-w><Right>
 
 set encoding=UTF-8
 "set showtabline=2
+set helplang=cn
 set updatetime=1000
 set nu
 set tabstop=4
