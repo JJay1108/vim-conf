@@ -21,7 +21,8 @@ Plug 'ajmwagar/vim-deus'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
 Plug 'yianwillis/vimcdoc'
-Plug 'vim-scripts/a.vim'
+"Plug 'vim-scripts/a.vim'
+"Plug 'Yohannfra/Vim-Goto-Header'
 call plug#end()
 
 
@@ -105,7 +106,7 @@ nnoremap <Leader>fun :Leaderf function<CR>
 nnoremap <Leader>mr :Leaderf mru<CR>
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
-
+let g:Lf_WindowHeight = 0.30
 "---------------------------------------------
 "					LeaderF end
 "--------------------------------------------
@@ -242,6 +243,11 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>" "输入回车来选择补全项"
 
@@ -258,6 +264,18 @@ function! s:show_documentation()
   endif
 endfunction
 
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+
 nnoremap <silent> <leader>cf :CocConfig<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
 "---------------COC NVIM END---------
@@ -273,6 +291,7 @@ nnoremap <leader>ll <C-w><Right>
 
 set encoding=UTF-8
 "set showtabline=2
+"set cmdheight=2
 set helplang=cn
 set updatetime=1000
 set nu
@@ -282,7 +301,6 @@ set expandtab
 set shiftwidth=4
 set ruler
 set cursorline
-set autoindent
 set showcmd
 set autoindent
 set syntax=on
@@ -290,3 +308,4 @@ set nocompatible
 set backspace=indent,eol,start
 set hlsearch
 set conceallevel=2
+set noshowmode
