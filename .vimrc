@@ -61,7 +61,7 @@ let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 
 " 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+fq']
+let g:gutentags_ctags_extra_args = ['--fields=+niazIS', '--extra=+fq']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxUZ']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
@@ -107,6 +107,7 @@ nnoremap <Leader>mr :Leaderf mru<CR>
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 let g:Lf_WindowHeight = 0.30
+let g:Lf_ShowRelativePath = 0
 "---------------------------------------------
 "					LeaderF end
 "--------------------------------------------
@@ -190,8 +191,6 @@ function! g:BuffetSetCustomColors()
 endfunction
 
 
-
-
 "---------------VIM BUFFET END ------
 
 
@@ -267,11 +266,11 @@ endfunction
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
