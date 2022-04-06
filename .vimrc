@@ -201,7 +201,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 "packadd! vimspector
 "
 "---------------QUICK COMPILE---------
-nnoremap r :call CompileRunGcc()<CR>
+nnoremap <leader>rr :call CompileRunGcc()<CR>
 
 function! CompileRunGcc()
 	execute "w"
@@ -223,6 +223,18 @@ function! CompileRunGcc()
 endfunction	
 
 "---------------QUICK COMPILE END-----
+nnoremap <leader>fm :call QuickFormat()<CR>
+
+function! QuickFormat()
+    execute "w"
+    if &filetype == 'c'
+        execute "!clang-format -i % -style=file"
+    endif
+
+endfunction
+
+"------------------------------------
+
 if exists('$TMUX')
 	set term=screen-256color
 endif
@@ -274,6 +286,10 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+"nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <leader>cf :CocConfig<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
