@@ -126,9 +126,9 @@ let g:Lf_ShowRelativePath = 0
 
 "set t_Co=256
 
-"if has("termguicolors")
-"	set termguicolors
-"endif
+if has("termguicolors")
+	set termguicolors
+endif
 
 
 "---------------配置结束----------
