@@ -23,6 +23,8 @@ Plug 'bagrat/vim-buffet'
 Plug 'yianwillis/vimcdoc'
 "Plug 'vim-scripts/a.vim'
 "Plug 'Yohannfra/Vim-Goto-Header'
+"Plug 'rhysd/vim-clang-format'
+Plug 'mhinz/vim-signify', {'branch': 'legacy'}
 call plug#end()
 
 
@@ -127,7 +129,7 @@ let g:Lf_ShowRelativePath = 0
 "set t_Co=256
 
 "if has("termguicolors")
-"	set termguicolors
+	set termguicolors
 "endif
 
 
@@ -191,6 +193,8 @@ function! g:BuffetSetCustomColors()
 endfunction
 
 
+
+
 "---------------VIM BUFFET END ------
 
 
@@ -223,6 +227,9 @@ function! CompileRunGcc()
 endfunction	
 
 "---------------QUICK COMPILE END-----
+
+"---------------QUICK FORMAT----------
+
 nnoremap <leader>fm :call QuickFormat()<CR>
 
 function! QuickFormat()
@@ -286,7 +293,7 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-"nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -295,6 +302,15 @@ nnoremap <silent> <leader>cf :CocConfig<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
 "---------------COC NVIM END---------
 "quickly edit the .vimrc
+
+"---------------clang FORMAT----------
+"let g:clang_format#code_style = "llvm"
+"let g:clang_format#auto_format_on_insert_leave = 1
+"let g:clang_format#style_options = {
+"            \ "AccessModifierOffset": -2,
+"            \ "BreakBeforeBraces": "Allman"}
+
+"---------------clang FORMAT END------
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>sw :split<CR>
@@ -304,11 +320,14 @@ nnoremap <leader>kk <C-w><Up>
 nnoremap <leader>hh <C-w><Left>
 nnoremap <leader>ll <C-w><Right>
 
+"to highlight the same word
+nnoremap hi gd    
+
 set encoding=UTF-8
 "set showtabline=2
 "set cmdheight=2
 set helplang=cn
-set updatetime=1000
+set updatetime=500
 set nu
 set tabstop=4
 set softtabstop=4
