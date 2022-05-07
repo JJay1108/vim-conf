@@ -8,7 +8,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
-Plug 'enricobacis/vim-airline-clock'
+"Plug 'enricobacis/vim-airline-clock'
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -24,7 +24,7 @@ Plug 'yianwillis/vimcdoc'
 "Plug 'vim-scripts/a.vim'
 "Plug 'Yohannfra/Vim-Goto-Header'
 "Plug 'rhysd/vim-clang-format'
-Plug 'mhinz/vim-signify', {'branch': 'legacy'}
+Plug 'mhinz/vim-signify'
 call plug#end()
 
 
@@ -77,6 +77,8 @@ endif
 "					gutentags end
 "---------------------------------------------
 
+set splitbelow splitright
+"为了跳转tag的时候方便些ctrl + w + ]
 
 "---------------------------------------------
 "					NERDTree begin
@@ -98,14 +100,14 @@ endif
 
 let mapleader=','
 let g:Lf_PreviewInPopup = 1
-nnoremap <Leader>fl :LeaderfLine<CR>
-nnoremap <Leader>ff :LeaderfFile<CR>
-nnoremap <Leader>tg :LeaderfTag<CR>
+nnoremap <Leader>fl :LeaderfLine --bottom<CR>
+nnoremap <Leader>ff :LeaderfFile --bottom<CR>
+nnoremap <Leader>tg :LeaderfTag --bottom<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
-nnoremap <Leader>rg :Leaderf rg<CR>
+nnoremap <Leader>rg :Leaderf rg --bottom<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
 nnoremap <Leader>fun :Leaderf function<CR>
-nnoremap <Leader>mr :Leaderf mru<CR>
+nnoremap <Leader>mr :Leaderf mru --bottom<CR>
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 let g:Lf_WindowHeight = 0.30
@@ -181,6 +183,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='deus'
 let g:airline_deus_bg='dark'
 let g:alrline#extensions#tabline#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
@@ -254,6 +257,7 @@ inoremap <C-l> <Right>
 "nnoremap <leader>hi I
 
 "---------------COC NVIM SETTINGS-----
+"let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-explorer']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -343,3 +347,5 @@ set backspace=indent,eol,start
 set hlsearch
 set conceallevel=2
 set noshowmode
+set synmaxcol=300
+"只对前三百字符进行高亮，避免卡顿
