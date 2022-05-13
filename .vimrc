@@ -315,6 +315,14 @@ nnoremap <C-n> :CocCommand explorer<CR>
 "            \ "BreakBeforeBraces": "Allman"}
 
 "---------------clang FORMAT END------
+
+
+"--------------VIM SIGNIFY BEGIN------
+let g:signify_sign_add = ''
+let g:signify_sign_change = ''
+"--------------VIM SIGNIFY END--------
+
+
 nnoremap <silent> <leader>ee :e ~/.vim/.vimrc<CR>
 nnoremap <leader>vs :vsplit<CR>
 nnoremap <leader>sw :split<CR>
