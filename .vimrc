@@ -13,7 +13,7 @@ Plug 'dense-analysis/ale'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'preservim/tagbar'
-"Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'Yggdroot/indentLine'
 "Plug 'skywind3000/asyncrun.vim'
 Plug 'ajmwagar/vim-deus'
@@ -100,15 +100,15 @@ set splitbelow splitright
 
 let mapleader=','
 let g:Lf_PreviewInPopup = 1
-nnoremap <Leader>fl :LeaderfLine --bottom<CR>
-nnoremap <Leader>ff :LeaderfFile --bottom<CR>
-nnoremap <Leader>tg :LeaderfTag --bottom<CR>
+nnoremap <Leader>fl :Leaderf line --bottom<CR>
+nnoremap <Leader>ff :Leaderf file --bottom<CR>
+nnoremap <Leader>tg :Leaderf tag --bottom<CR>
 nnoremap <Leader>tt :Leaderf bufTag --right<CR>
 nnoremap <Leader>rg :Leaderf rg --bottom<CR>
 nnoremap <Leader>bf :Leaderf buffer --popup<CR>
 nnoremap <Leader>fun :Leaderf function<CR>
 nnoremap <Leader>mr :Leaderf mru --bottom<CR>
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 , 'Colorscheme': 1}
 "let g:Lf_CommandMap = {'<C-k>': ['<Up>'], '<C-j>': ['<Down>']}
 let g:Lf_WindowHeight = 0.30
 let g:Lf_ShowRelativePath = 0
